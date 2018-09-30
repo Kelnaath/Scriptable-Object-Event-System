@@ -22,6 +22,6 @@ public class SomeKittenMeowLogic : MonoBehaviour
     public void ExposeMeowedKitten(Kitten k)
     {
         aS.PlayOneShot(kittenMeow);
-        Debug.Log(k.name + " meowed, her fluffines level is: " + k.fluffinessLevel + ". So cuuuuuuute :D");
+        //Debug.Log(k.name + " meowed, her fluffines level is: " + k.fluffinessLevel + ". So cuuuuuuute :D");
     }
 }

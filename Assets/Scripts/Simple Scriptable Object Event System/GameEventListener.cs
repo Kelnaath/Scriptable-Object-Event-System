@@ -20,6 +20,11 @@ namespace Maikel.EventSystem
             Event.UnregisterListener(OnEventRaised);
         }
 
+        private void OnDestroy()
+        {
+            Event.UnregisterListener(OnEventRaised);
+        }
+
         public abstract void OnEventRaised(object sender, ArgType args);
     }
 }

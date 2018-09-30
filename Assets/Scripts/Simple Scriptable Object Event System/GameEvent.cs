@@ -28,6 +28,16 @@ namespace Maikel.EventSystem
             EventFired -= listener;
         }
 
+        public void ClearListeners()
+        {
+            EventFired = null;
+        }
+
+        private void OnDestroy()
+        {
+            ClearListeners();
+        }
+
     }
 }
 
