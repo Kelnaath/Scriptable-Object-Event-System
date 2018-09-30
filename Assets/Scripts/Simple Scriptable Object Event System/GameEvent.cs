@@ -1,29 +1,33 @@
 ﻿using UnityEngine;
 using System;
 
-public class GameEvent<ArgType> : ScriptableObject
-    where ArgType : EventArgs
+namespace Maikel.EventSystem
 {
-    public event EventHandler<ArgType> EventFired;
-
-    public void Invoke(ArgType args)
+    public class GameEvent<ArgType> : ScriptableObject
+    where ArgType : EventArgs
     {
-        if(EventFired != null)
+        public event EventHandler<ArgType> EventFired;
+
+        public void Invoke(ArgType args)
         {
-            EventFired.Invoke(this, args);
+            if (EventFired != null)
+            {
+                EventFired.Invoke(this, args);
+            }
         }
+
+        public void RegisterListener(EventHandler<ArgType> listener)
+        {
+            EventFired += listener;
+
+        }
+
+        public void UnregisterListener(EventHandler<ArgType> listener)
+        {
+
+            EventFired -= listener;
+        }
+
     }
-
-    public void RegisterListener(EventHandler<ArgType> listener)
-    {
-        EventFired += listener;
-        
-    }
-
-    public void UnregisterListener(EventHandler<ArgType> listener)
-    {
-
-        EventFired -= listener;
-    }
-
 }
+

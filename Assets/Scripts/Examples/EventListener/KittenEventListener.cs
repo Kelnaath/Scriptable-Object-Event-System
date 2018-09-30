@@ -1,5 +1,6 @@
 ﻿using UnityEngine.Events;
 using System;
+using Maikel.EventSystem;
 
 [Serializable]
 public class KittenEventListener : UnityEventListener<Kitten, KittenEvent, KittenUnityEvent>

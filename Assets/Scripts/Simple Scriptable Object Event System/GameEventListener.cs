@@ -2,22 +2,26 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class GameEventListener<ArgType, EventType> : MonoBehaviour
+namespace Maikel.EventSystem
+{
+    public abstract class GameEventListener<ArgType, EventType> : MonoBehaviour
     where ArgType : EventArgs
     where EventType : GameEvent<ArgType>
-{
-	public EventType Event;	
-
-    private void OnEnable()
     {
-        Event.RegisterListener(OnEventRaised);
-    }
+        public EventType Event;
 
-    private void OnDisable()
-    {
-        Event.UnregisterListener(OnEventRaised);
-    }
+        private void OnEnable()
+        {
+            Event.RegisterListener(OnEventRaised);
+        }
 
-    public abstract void OnEventRaised(object sender, ArgType args);
+        private void OnDisable()
+        {
+            Event.UnregisterListener(OnEventRaised);
+        }
+
+        public abstract void OnEventRaised(object sender, ArgType args);
+    }
 }
+
 
